@@ -1,17 +1,28 @@
 package main
 
 import (
-	"net/http"
-	"time"
+	"flag"
+	"fmt"
+	"log"
+	"net"
+
+	grpc "google.golang.org/grpc"
+)
+
+var (
+	port = flag.Int("port", 8080, "The backend server port")
 )
 
 func main() {
-	s := &http.Server{
-		Addr:           ":8080",
-		ReadTimeout:    time.Second * 60,
-		WriteTimeout:   time.Second * 60,
-		MaxHeaderBytes: 1 << 20,
-	}
+	flag.Parse()
 
-	s.ListenAndServe()
+	conn, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", *port))
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
+	defer conn.Close()
+
+	var opt []grpc.ServerOption
+	grpcServer := grpc.NewServer(opt...)
+	grpcServer.Serve(conn)
 }

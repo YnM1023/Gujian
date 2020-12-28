@@ -10,9 +10,9 @@
 
 __Go__ + __Vue__ 前后端分离项目：
 
+- Backend Server: __grpc__
 - Access Contorl: __jwt__
 - MySQL Integration: __gorm__
-- Decoupling: [__facebook inject pkg__](https://pkg.go.dev/github.com/facebookgo/inject)
 - Deploy: __Docker__ on Cloud
 
 ### Authors
