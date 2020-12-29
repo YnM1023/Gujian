@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package gujian.calculation;
+option go_package = ".;calculation";
+
+// The attribute points of a player.
+// Next field: 11
+message Attribute {
+    float qiang_du = 1;
+    float zhuan_jing = 2;
+    float hui_xin = 3;
+    float hui_xin_shang_hai = 4;
+    float zhuan_zhu = 5;
+    float ji_su = 6;
+    int32 gong_ji = 7;
+    int32 shu_xing = 8;
+    ChiYu chiyu_buff = 9;
+    repeated ZhiYou zhiyou_buff = 10;
+}
+
+// The change of dps (in percentage).
+// Next field: 11
+message AttrEffect {
+    float qiang_du = 1;
+    float zhuan_jing = 2;
+    float hui_xin = 3;
+    float hui_xin_shang_hai = 4;
+    float zhuan_zhu = 5;
+    float ji_su = 6;
+    float gong_ji = 7;
+    float shu_xing = 8;
+    float chiyu_buff = 9;
+    float zhiyou_buff = 10;
+}
+
+// The conversion between attribute points and attribute percentages.
+// Next field: 6
+message AttrConversion {
+    float qiang_du = 1;
+    repeated float zhuan_jing =2;
+    float hui_xin = 3;
+    float zhuan_zhu = 4;
+    float ji_su = 5;
+}
+
+// ChiYu Buff
+// Next field: 4
+enum ChiYu {
+    CY_QIANG_DU = 0;
+    CY_HUI_XIN = 1;
+    CY_ZHUAN_ZHU = 2;
+    CY_JI_SU = 3;
+}
+
+// ZhiYou Buff
+// Next field: 3
+enum ZhiYou {
+    ZY_ZHUAN_JING = 0;
+    ZY_QIANG_DU = 1;
+    ZY_HUI_XIN = 2;
+}

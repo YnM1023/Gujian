@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+import "proto/role.proto";
+import "proto/attribute.proto";
+
+package gujian.calculation;
+option go_package = ".;calculation";
+
+// Next field: 7
+message AttributeCompareRequest {
+    Role role = 1;
+    Branch branch = 2;
+    Attribute original_attr = 3;
+    Attribute new_attr = 4;
+    Attribute change_on_attr = 5;
+    int32 dps = 6;
+}
+
+// Next field: 3
+message AttributeCompareResponse {
+    int32 new_dps = 1;
+    AttrEffect attr_contributions = 2;
+}
+
+// Calculate provides rpc services for calculating the demage.
+service Calculate {
+    // AttributeCompare calculates demage increment/decrement according to the original & new attributes.
+    rpc AttributeCompare(AttributeCompareRequest) returns (AttributeCompareResponse);
+}

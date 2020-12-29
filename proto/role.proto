@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package gujian.calculation;
+option go_package = ".;calculation";
+
+// List of dps roles
+// Next field: 10
+enum Role {
+    ZHAN_FENG = 0;
+    TIAN_GANG = 1;
+    SHEN_HONG = 2;
+    FEI_XING = 3;
+    MIAO_FA = 4;
+    SI_MING = 5;
+    ZHOU_YIN = 6;
+    LONG_JUN = 7;
+    LING_YING = 8;
+    GUAN_RI = 9;
+}
+
+// List of dps branches
+// Next field: 2
+enum Branch {
+    ZF_CHUN_HAO = 0;
+    ZF_CHUN_YING = 1;
+}
