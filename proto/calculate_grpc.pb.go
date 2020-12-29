@@ -95,5 +95,5 @@ var _Calculate_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "proto/server.proto",
+	Metadata: "proto/calculate.proto",
 }
