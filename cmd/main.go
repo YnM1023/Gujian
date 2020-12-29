@@ -6,6 +6,9 @@ import (
 	"log"
 	"net"
 
+	pb "marinette/gujian/proto/calculation"
+	rpcCal "marinette/gujian/rpc/calculation"
+
 	"google.golang.org/grpc"
 )
 
@@ -24,5 +27,8 @@ func main() {
 
 	var opt []grpc.ServerOption
 	grpcServer := grpc.NewServer(opt...)
+
+	pb.RegisterCalculateServer(grpcServer, &rpcCal.Service{})
+
 	grpcServer.Serve(conn)
 }
